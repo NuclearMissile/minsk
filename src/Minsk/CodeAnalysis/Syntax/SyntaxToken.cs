@@ -1,5 +1,3 @@
-using System.Collections.Generic;
-using System.Linq;
 using Minsk.CodeAnalysis.Text;
 
 namespace Minsk.CodeAnalysis.Syntax
@@ -19,5 +17,10 @@ namespace Minsk.CodeAnalysis.Syntax
         public string Text { get; }
         public object Value { get; }
         public override TextSpan Span => new TextSpan(Position, Text?.Length ?? 0);
+
+        /// <summary>
+        /// A token is missing if it was inserted by the parser and doesn't appear in source.
+        /// </summary>
+        public bool IsMissing => Text == null;
     }
 }
